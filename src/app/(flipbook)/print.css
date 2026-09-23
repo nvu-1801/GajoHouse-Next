@@ -1,0 +1,320 @@
+/* ==========================================================================
+   5. PRINT STYLES — Booklet (gấp đôi) · Slide Preview (giống UI) · Trang đơn
+   Trang in được render ở ĐÚNG kích thước UI (680×962) và thu phóng bằng CSS zoom
+   để khớp hoàn hảo với khổ A4 mà không bị cắt xén, phân mảnh hay sai lệch khoảng cách.
+   ========================================================================== */
+
+@page {
+    size: A4 landscape;
+    margin: 0;
+}
+
+.booklet-print-container,
+.standard-print-container,
+.slides-print-container {
+    display: none;
+}
+
+/* Ẩn chữ gợi ý tương tác khi in nhưng GIỮ NGUYÊN khoảng cách layout
+   (dùng visibility thay vì display để bản in khớp 100% với UI trên web) */
+.booklet-print-container .qr-tap-hint,
+.standard-print-container .qr-tap-hint,
+.slides-print-container .qr-tap-hint,
+.booklet-print-container .cover-hint,
+.standard-print-container .cover-hint,
+.slides-print-container .cover-hint {
+    visibility: hidden !important;
+}
+
+@media print {
+    *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    html, body {
+        width: 100% !important;
+        height: auto !important;
+        background: #FFFFFF !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: visible !important;
+        display: block !important;
+    }
+
+    /* UI ngoài cuốn sách: bỏ hẳn khỏi layout */
+    .brand-header,
+    .top-action-bar,
+    .bottom-nav-bar,
+    .thumbnail-drawer,
+    .export-modal-overlay,
+    .toast-msg {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* Chữ gợi ý nằm TRONG trang sách: chỉ ẩn chữ, giữ nguyên khoảng cách
+       => bản in khớp 100% với UI trên web (không lệch 1px) */
+    .cover-hint,
+    .qr-tap-hint {
+        visibility: hidden !important;
+        animation: none !important;
+    }
+
+    /* Ẩn sân khấu 3D khi in */
+    body.print-mode-booklet .stage-container,
+    body.print-mode-slides .stage-container,
+    body.print-mode-standard .stage-container {
+        display: none !important;
+    }
+
+    /* ==========================================================================
+       1. CHẾ ĐỘ BOOKLET & SLIDES: KHỔ A4 NGANG (297mm × 210mm)
+       ========================================================================== */
+    body.print-mode-booklet .booklet-print-container,
+    body.print-mode-slides .slides-print-container {
+        display: block !important;
+        width: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body.print-mode-booklet .booklet-sheet,
+    body.print-mode-slides .slides-sheet {
+        width: 297mm !important;
+        height: 210mm !important;
+        min-width: 297mm !important;
+        max-width: 297mm !important;
+        min-height: 210mm !important;
+        max-height: 210mm !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        position: relative !important;
+        overflow: hidden !important;
+        background: #FFFFFF !important;
+    }
+
+    /* Mỗi nửa tờ = 148.5mm × 210mm (chuẩn nửa A4) */
+    body.print-mode-booklet .booklet-half,
+    body.print-mode-slides .slides-half {
+        width: 148.5mm !important;
+        height: 210mm !important;
+        min-width: 148.5mm !important;
+        max-width: 148.5mm !important;
+        min-height: 210mm !important;
+        max-height: 210mm !important;
+        flex: 0 0 148.5mm !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        position: relative !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    body.print-mode-slides .slides-sheet--single {
+        justify-content: center !important;
+    }
+
+    /* Đường gấp giữa 2 trang của Booklet */
+    body.print-mode-booklet .booklet-fold-line {
+        position: absolute !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 148.5mm !important;
+        width: 1px !important;
+        border-right: 1px dashed rgba(60, 74, 62, 0.25) !important;
+        z-index: 10 !important;
+    }
+
+    /* Vạch chia nhẹ giữa 2 trang Slides */
+    body.print-mode-slides .slides-sheet:not(.slides-sheet--single) .slides-half:first-child::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        border-right: 1px dashed rgba(60, 74, 62, 0.22);
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    /* Trang đặt chính giữa nửa tờ: thu phóng bằng zoom: 0.8245 để vừa khít 148.5 × 210mm.
+       Dùng CSS zoom giúp Chromium tính toán lại bounding box TRƯỚC khi phân trang,
+       loại bỏ hoàn toàn lỗi vỡ layout hay xé ngang trang của CSS transform */
+    body.print-mode-booklet .booklet-half .page,
+    body.print-mode-slides .slides-half .page {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 680px !important;
+        height: 962px !important;
+        min-width: 680px !important;
+        max-width: 680px !important;
+        min-height: 962px !important;
+        max-height: 962px !important;
+        zoom: 0.8245 !important;
+        transform: none !important;
+        box-sizing: border-box !important;
+        box-shadow: none !important;
+        border: none !important;
+        margin: auto !important;
+        overflow: hidden !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        contain: none !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+    }
+
+    /* Bìa sách: căn giữa theo trục dọc chuẩn theo UI */
+    .booklet-print-container .page.page-cover,
+    .slides-print-container .page.page-cover,
+    .standard-print-container .page.page-cover {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    /* ==========================================================================
+       2. CHẾ ĐỘ 12 TRANG ĐƠN (STANDARD 1:1): KHỔ A4 DỌC (210mm × 297mm)
+       ========================================================================== */
+    body.print-mode-standard .standard-print-container {
+        display: block !important;
+        width: 210mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body.print-mode-standard .standard-print-sheet {
+        width: 210mm !important;
+        height: 297mm !important;
+        min-width: 210mm !important;
+        max-width: 210mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        position: relative !important;
+        overflow: hidden !important;
+        background: #FFFFFF !important;
+    }
+
+    /* Đúng tỷ lệ 1:1 (680×962px = 180×254.5mm), lề ngoài ~15mm cân đối tuyệt đối */
+    body.print-mode-standard .standard-print-sheet .page {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 680px !important;
+        height: 962px !important;
+        min-width: 680px !important;
+        max-width: 680px !important;
+        min-height: 962px !important;
+        max-height: 962px !important;
+        zoom: 1 !important;
+        transform: none !important;
+        box-sizing: border-box !important;
+        box-shadow: none !important;
+        border: 1px solid rgba(60, 74, 62, 0.12) !important;
+        margin: auto !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        contain: none !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+    }
+
+    /* ==========================================================================
+       3. BẢO TOÀN ĐỊNH DẠNG DESKTOP ĐỒNG NHẤT VỚI UI (KHÔNG BỊ LỆCH RESPONSIVE)
+       ========================================================================== */
+    .booklet-print-container .page,
+    .slides-print-container .page,
+    .standard-print-container .page {
+        font-size: 16px;
+    }
+
+    /* Bảo đảm lưới 3 cột cho Khám Phá & Đặc Sản khi in */
+    .booklet-print-container .mini-grid-3,
+    .slides-print-container .mini-grid-3,
+    .standard-print-container .mini-grid-3 {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        grid-template-rows: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        flex: 1 !important;
+        min-height: 0 !important;
+    }
+
+    .booklet-print-container .mini-card,
+    .slides-print-container .mini-card,
+    .standard-print-container .mini-card {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .booklet-print-container .mini-card-img,
+    .slides-print-container .mini-card-img,
+    .standard-print-container .mini-card-img {
+        position: relative !important;
+        width: 100% !important;
+        flex: 1 !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .booklet-print-container .mini-card-img img,
+    .slides-print-container .mini-card-img img,
+    .standard-print-container .mini-card-img img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
+    }
+
+    /* Đảm bảo hình ảnh sắc nét, không vỡ tỉ lệ */
+    .booklet-print-container img,
+    .slides-print-container img,
+    .standard-print-container img {
+        image-rendering: -webkit-optimize-contrast !important;
+        image-rendering: auto !important;
+    }
+}
+

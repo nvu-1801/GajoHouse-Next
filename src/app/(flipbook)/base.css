@@ -1,0 +1,76 @@
+/* ==========================================================================
+   1. BASE & TOKENS (GAJO'S HOUSE Japandi Luxury Palette & Typography Reset)
+   ========================================================================== */
+
+:root {
+    /* 🎨 BỘ MÀU "HƯƠNG MẠ NON" (Thư giãn, Tươi sáng & Mộc mạc) */
+    --bg-sage: #D6E0D3;               /* Nền chính: Xanh Xô Thơm Nhạt / Soft Sage */
+    --bg-rice: #F7F6F0;               /* Nền phụ: Trắng Hạt Gạo / Off-White */
+    --bg-cream: #D6E0D3;              /* Alias cho page background */
+    --bg-white: #FFFFFF;
+    --bg-dark: #1F2720;               /* Nền tối bìa & ambient: Deep Forest / Dark Moss */
+    --bg-leather: #151C16;
+    --text-heading: #3C4A3E;          /* Tiêu đề chính: Xanh Rêu Đậm / Deep Moss */
+    --text-dark: #3C4A3E;             /* Alias text đậm */
+    --text-body: #5C6656;             /* Văn bản / Đoạn văn: Xanh Xám Trầm */
+    --text-muted: #5C6656;            /* Alias text phụ */
+    --accent-gold: #D4A373;           /* Điểm nhấn / Nút bấm: Vàng Gỗ / Lúa Chín */
+    --accent-gold-light: #E8CAAB;     /* Vàng lúa non sáng */
+    --accent-gold-dark: #B8834F;      /* Vàng gỗ ấm đậm */
+    --border-divider: rgba(212, 163, 115, 0.35); /* Gạch ngang Vàng Gỗ */
+    --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-script: 'Dancing Script', cursive;
+    --font-display: 'Cinzel', serif;
+
+    /* 📐 Design tokens dùng chung cho toàn bộ catalogue */
+    --r-xs: 8px;                      /* chip nhỏ */
+    --r-sm: 10px;                     /* badge / input */
+    --r-md: 16px;                     /* card chuẩn */
+    --r-lg: 16px;                     /* panel / khối lớn */
+    --r-xl: 22px;                     /* khối lớn nhất */
+    --r-pill: 999px;
+    --pad-page: 28px 32px 20px;       /* lề chuẩn mọi trang */
+    --surface: #F7F6F0;               /* nền card */
+    --surface-mint: #EDF2E8;          /* accent checklist */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    -webkit-text-size-adjust: 100%;
+    overscroll-behavior-y: none;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--text-dark);
+    background: radial-gradient(circle at center, #222C24 0%, #111812 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    padding: 8px 6px calc(76px + env(safe-area-inset-bottom, 0px));
+    user-select: none;
+    touch-action: pan-y;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.03); }
+}
