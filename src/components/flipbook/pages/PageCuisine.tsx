@@ -40,11 +40,11 @@ export const PageCuisine: React.FC<PageProps> = ({ pageNum = '' }) => {
 
         {/* Bữa sáng truyền thống / Điểm tâm bản địa */}
         <section className="cuisine-breakfast-card">
-          <i className="fa-solid fa-utensils cbc-watermark" aria-hidden="true" />
+          <i className="fa-solid fa-bowl-rice cbc-watermark" aria-hidden="true" />
 
           <header className="cbc-head">
             <span className="cbc-icon" aria-hidden="true">
-              <i className="fa-solid fa-bowl-rice" />
+              <i className="fa-solid fa-utensils" />
             </span>
             <div className="cbc-title-wrap">
               <div className="cbc-eyebrow">
