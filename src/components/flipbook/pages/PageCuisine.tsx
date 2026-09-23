@@ -39,8 +39,13 @@ export const PageCuisine: React.FC<PageProps> = ({ pageNum = '' }) => {
         </div>
 
         {/* Bữa sáng truyền thống / Điểm tâm bản địa */}
-        <div className="cuisine-breakfast-card">
-          <div className="cbc-head">
+        <section className="cuisine-breakfast-card">
+          <i className="fa-solid fa-utensils cbc-watermark" aria-hidden="true" />
+
+          <header className="cbc-head">
+            <span className="cbc-icon" aria-hidden="true">
+              <i className="fa-solid fa-bowl-rice" />
+            </span>
             <div className="cbc-title-wrap">
               <div className="cbc-eyebrow">
                 <span className="cbc-badge">{LOCAL_BREAKFAST.badge}</span>
@@ -49,10 +54,13 @@ export const PageCuisine: React.FC<PageProps> = ({ pageNum = '' }) => {
               <h4 className="cbc-title">{LOCAL_BREAKFAST.title}</h4>
             </div>
             <div className="cbc-price-tag">
-              <span className="cbc-price-val">{LOCAL_BREAKFAST.price}đ</span>
+              <span className="cbc-price-val">
+                {LOCAL_BREAKFAST.price}
+                <sup>đ</sup>
+              </span>
               <span className="cbc-price-unit">{LOCAL_BREAKFAST.priceUnit}</span>
             </div>
-          </div>
+          </header>
 
           <div className="cbc-dishes">
             {LOCAL_BREAKFAST.dishes.map((dish) => (
@@ -63,13 +71,13 @@ export const PageCuisine: React.FC<PageProps> = ({ pageNum = '' }) => {
             <span className="cbc-dish-pill cbc-dish-more">...</span>
           </div>
 
-          <div className="cbc-foot">
+          <footer className="cbc-foot">
             <i className="fa-solid fa-bell-concierge" />
             <span>
-              Món ăn truyền thống &amp; địa phương &bull; <strong>{LOCAL_BREAKFAST.contactNote}</strong>
+              {LOCAL_BREAKFAST.subtitle} &bull; <strong>{LOCAL_BREAKFAST.contactNote}</strong>
             </span>
-          </div>
-        </div>
+          </footer>
+        </section>
       </div>
     </PageShell>
   );
