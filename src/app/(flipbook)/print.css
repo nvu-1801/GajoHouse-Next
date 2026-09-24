@@ -63,6 +63,7 @@
 
     /* Ẩn sân khấu 3D khi in */
     body.print-mode-booklet .stage-container,
+    body.print-mode-booklet-a3 .stage-container,
     body.print-mode-slides .stage-container,
     body.print-mode-slides-a3 .stage-container,
     body.print-mode-standard .stage-container {
@@ -269,6 +270,100 @@
 
     /* Trang đặt chính giữa nửa tờ A3: zoom 1.166 khớp trọn 210×297mm (A4 dọc) */
     body.print-mode-slides-a3 .slides-half .page {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 680px !important;
+        height: 962px !important;
+        min-width: 680px !important;
+        max-width: 680px !important;
+        min-height: 962px !important;
+        max-height: 962px !important;
+        zoom: 1.166 !important;
+        transform: none !important;
+        box-sizing: border-box !important;
+        box-shadow: none !important;
+        border: none !important;
+        margin: auto !important;
+        overflow: hidden !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        contain: none !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+    }
+
+    /* ==========================================================================
+       1C. CHẾ ĐỘ BOOKLET KHỔ A3 (420mm × 297mm) - 3 TỜ A3 IN 2 MẶT
+       Mỗi nửa tờ = 210mm × 297mm (khổ A4 dọc), gấp đôi thành sách A4
+       ========================================================================== */
+    body.print-mode-booklet-a3 .booklet-print-container {
+        display: block !important;
+        width: 420mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body.print-mode-booklet-a3 .booklet-sheet {
+        width: 420mm !important;
+        height: 297mm !important;
+        min-width: 420mm !important;
+        max-width: 420mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        position: relative !important;
+        overflow: hidden !important;
+        background: #FFFFFF !important;
+    }
+
+    body.print-mode-booklet-a3 .booklet-half {
+        width: 210mm !important;
+        height: 297mm !important;
+        min-width: 210mm !important;
+        max-width: 210mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
+        flex: 0 0 210mm !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        position: relative !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    body.print-mode-booklet-a3 .booklet-fold-line {
+        position: absolute !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 210mm !important;
+        width: 1px !important;
+        border-right: 1px dashed rgba(60, 74, 62, 0.25) !important;
+        z-index: 10 !important;
+    }
+
+    body.print-mode-booklet-a3 .booklet-half .page {
         position: relative !important;
         left: auto !important;
         top: auto !important;

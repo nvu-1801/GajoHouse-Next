@@ -78,7 +78,7 @@ export default function Flipbook() {
   }, [copyText]);
 
   const prepareAndPrint = useCallback(
-    async (mode: 'booklet' | 'standard' | 'slides' | 'slides-a3') => {
+    async (mode: 'booklet' | 'booklet-a3' | 'standard' | 'slides' | 'slides-a3') => {
       closeAllModals();
 
       let pageStyle = document.getElementById('dynamic-page-print-style') as HTMLStyleElement | null;
@@ -89,13 +89,19 @@ export default function Flipbook() {
       }
       if (mode === 'standard') {
         pageStyle.textContent = `@page { size: A4 portrait; margin: 0; }`;
-      } else if (mode === 'slides-a3') {
+      } else if (mode === 'slides-a3' || mode === 'booklet-a3') {
         pageStyle.textContent = `@page { size: A3 landscape; margin: 0; }`;
       } else {
         pageStyle.textContent = `@page { size: A4 landscape; margin: 0; }`;
       }
 
-      document.body.classList.remove('print-mode-booklet', 'print-mode-standard', 'print-mode-slides', 'print-mode-slides-a3');
+      document.body.classList.remove(
+        'print-mode-booklet',
+        'print-mode-booklet-a3',
+        'print-mode-standard',
+        'print-mode-slides',
+        'print-mode-slides-a3',
+      );
       document.body.classList.add(`print-mode-${mode}`);
 
       if (document.fonts && document.fonts.ready) {
@@ -107,7 +113,7 @@ export default function Flipbook() {
       }
 
       const containerSelector =
-        mode === 'booklet'
+        mode === 'booklet' || mode === 'booklet-a3'
           ? '.booklet-print-container'
           : mode === 'standard'
             ? '.standard-print-container'
@@ -155,10 +161,10 @@ export default function Flipbook() {
     [closeAllModals],
   );
 
-  const printBooklet = useCallback(() => prepareAndPrint('booklet'), [prepareAndPrint]);
+  const printBookletA4 = useCallback(() => prepareAndPrint('booklet'), [prepareAndPrint]);
+  const printBookletA3 = useCallback(() => prepareAndPrint('booklet-a3'), [prepareAndPrint]);
+  const printPreviewUI = useCallback(() => prepareAndPrint('slides'), [prepareAndPrint]);
   const printStandard = useCallback(() => prepareAndPrint('standard'), [prepareAndPrint]);
-  const printSlides = useCallback(() => prepareAndPrint('slides'), [prepareAndPrint]);
-  const printSlidesA3 = useCallback(() => prepareAndPrint('slides-a3'), [prepareAndPrint]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -239,7 +245,13 @@ export default function Flipbook() {
     };
 
     const handleAfterPrint = () => {
-      document.body.classList.remove('print-mode-booklet', 'print-mode-standard', 'print-mode-slides', 'print-mode-slides-a3');
+      document.body.classList.remove(
+        'print-mode-booklet',
+        'print-mode-booklet-a3',
+        'print-mode-standard',
+        'print-mode-slides',
+        'print-mode-slides-a3',
+      );
       const pageStyle = document.getElementById('dynamic-page-print-style');
       if (pageStyle) pageStyle.remove();
     };
@@ -314,10 +326,10 @@ export default function Flipbook() {
 
       <div className="stage-container">
         <FlipbookHeader
-          onOpenBooklet={() => setIsBookletOpen(true)}
+          onPrintBookletA4={printBookletA4}
+          onPrintBookletA3={printBookletA3}
+          onPrintPreviewUI={printPreviewUI}
           onShare={handleShare}
-          onPrintA4={printSlides}
-          onPrintA3={printSlidesA3}
         />
 
         <div
@@ -383,17 +395,15 @@ export default function Flipbook() {
       <ExportModal
         isOpen={isExportOpen}
         onClose={closeAllModals}
-        onOpenBooklet={() => setIsBookletOpen(true)}
-        onShare={handleShare}
-        onPrintStandard={printStandard}
-        onPrintSlides={printSlides}
-        onPrintSlidesA3={printSlidesA3}
+        onPrintBookletA4={printBookletA4}
+        onPrintBookletA3={printBookletA3}
+        onPrintPreviewUI={printPreviewUI}
       />
 
       <BookletModal
         isOpen={isBookletOpen}
         onClose={closeAllModals}
-        onConfirmPrint={printBooklet}
+        onConfirmPrint={printBookletA4}
         pages={pages}
       />
 

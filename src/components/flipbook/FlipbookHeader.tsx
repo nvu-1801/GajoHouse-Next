@@ -3,17 +3,17 @@ import Link from 'next/link';
 import { SITE_CONFIG } from '@/data/site-config';
 
 interface FlipbookHeaderProps {
-  onOpenBooklet: () => void;
+  onPrintBookletA4: () => void;
+  onPrintBookletA3: () => void;
+  onPrintPreviewUI: () => void;
   onShare: () => void;
-  onPrintA4: () => void;
-  onPrintA3: () => void;
 }
 
 export const FlipbookHeader: React.FC<FlipbookHeaderProps> = ({
-  onOpenBooklet,
+  onPrintBookletA4,
+  onPrintBookletA3,
+  onPrintPreviewUI,
   onShare,
-  onPrintA4,
-  onPrintA3,
 }) => {
   return (
     <>
@@ -25,14 +25,14 @@ export const FlipbookHeader: React.FC<FlipbookHeaderProps> = ({
         <Link href="/" className="top-btn-pill">
           <i className="fa-solid fa-arrow-left" /> Về Trang Chủ
         </Link>
-        <button className="top-btn-pill" id="topPrintA4Btn" onClick={onPrintA4} title="In Xem Trước Dạng Slide - Khổ A4 Ngang (6 Tờ)">
-          <i className="fa-solid fa-print" /> In A4 Ngang
+        <button className="top-btn-pill" id="topBookletA4Btn" onClick={onPrintBookletA4} title="In Booklet Khổ A4 (3 Tờ In 2 Mặt Gấp Đôi)">
+          <i className="fa-solid fa-book-open" /> Booklet A4
         </button>
-        <button className="top-btn-pill" id="topPrintA3Btn" onClick={onPrintA3} title="In Xem Trước Dạng Slide - Khổ A3 Ngang (6 Tờ)">
-          <i className="fa-solid fa-file-contract" /> In A3 Ngang
+        <button className="top-btn-pill" id="topBookletA3Btn" onClick={onPrintBookletA3} title="In Booklet Khổ A3 (3 Tờ In 2 Mặt Gấp Đôi)">
+          <i className="fa-solid fa-book" /> Booklet A3
         </button>
-        <button className="top-btn-pill" id="topBookletBtn" onClick={onOpenBooklet}>
-          <i className="fa-solid fa-book-open" /> Booklet 2 Mặt
+        <button className="top-btn-pill" id="topPreviewUIBtn" onClick={onPrintPreviewUI} title="In Xem Trước Dạng Slide (Trang Đôi Trải Phẳng)">
+          <i className="fa-solid fa-images" /> Preview UI
         </button>
         <button className="top-btn-pill" id="topShareBtn" onClick={onShare}>
           <i className="fa-solid fa-share-nodes" /> Chia Sẻ

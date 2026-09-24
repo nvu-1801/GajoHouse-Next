@@ -3,21 +3,17 @@ import React from 'react';
 interface ExportModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onOpenBooklet: () => void;
-  onShare: () => void;
-  onPrintStandard: () => void;
-  onPrintSlides: () => void;
-  onPrintSlidesA3?: () => void;
+  onPrintBookletA4: () => void;
+  onPrintBookletA3: () => void;
+  onPrintPreviewUI: () => void;
 }
 
 export const ExportModal: React.FC<ExportModalProps> = ({
   isOpen,
   onClose,
-  onOpenBooklet,
-  onShare,
-  onPrintStandard,
-  onPrintSlides,
-  onPrintSlidesA3,
+  onPrintBookletA4,
+  onPrintBookletA3,
+  onPrintPreviewUI,
 }) => {
   return (
     <div
@@ -39,53 +35,29 @@ export const ExportModal: React.FC<ExportModalProps> = ({
         <p>Chọn phương thức xuất bản phù hợp:</p>
 
         <div className="export-options-grid">
-          <div className="export-opt-btn highlight-opt" id="modalOptSlidesA4" onClick={onPrintSlides}>
-            <i className="fa-solid fa-print" />
-            <div>
-              <strong>In A4 Ngang (Trang Đôi Sách - 6 Tờ A4)</strong>
-              <span>Khổ tiêu chuẩn 297&times;210mm &bull; Mỗi trang con khổ A5 (148.5&times;210mm) &bull; Phù hợp máy in văn phòng</span>
-            </div>
-          </div>
-
-          <div className="export-opt-btn" id="modalOptSlidesA3" onClick={onPrintSlidesA3 || onPrintSlides}>
-            <i className="fa-solid fa-file-contract" />
-            <div>
-              <strong>In A3 Ngang (Trang Đôi Sách - 6 Tờ A3 Khổ Lớn)</strong>
-              <span>Khổ lớn 420&times;297mm &bull; Mỗi trang con đúng bằng 1 tờ A4 dọc (210&times;297mm) &bull; Gấp đôi thành catalogue A4</span>
-            </div>
-          </div>
-
-          <div className="export-opt-btn" id="modalOptBooklet" onClick={onOpenBooklet}>
+          <div className="export-opt-btn highlight-opt" id="modalOptBookletA4" onClick={onPrintBookletA4}>
             <i className="fa-solid fa-book-open" />
             <div>
-              <strong>In / Xuất Bản Booklet A4 2 Mặt (1-12, 2-11...)</strong>
-              <span>3 tờ A4 in 2 mặt &bull; Gấp đôi ở giữa thành cuốn catalogue A5</span>
+              <strong>In Booklet Bản A4 (Sách Gấp Đôi)</strong>
+              <span>Tự động ghép trang 1-12, 2-11... &bull; 3 tờ A4 in 2 mặt (lật cạnh ngắn) &bull; Gấp đôi thành catalogue A5 (148.5&times;210mm)</span>
             </div>
           </div>
 
-          <div className="export-opt-btn" id="modalOptShare" onClick={onShare}>
-            <i className="fa-solid fa-share-nodes" />
+          <div className="export-opt-btn" id="modalOptBookletA3" onClick={onPrintBookletA3}>
+            <i className="fa-solid fa-book" />
             <div>
-              <strong>Chia Sẻ 3D Flipbook Gửi Khách Hàng</strong>
-              <span>Gửi qua Zalo, Messenger, Facebook, tin nhắn SMS</span>
+              <strong>In Booklet Bản A3 (Sách Gấp Đôi Khổ Lớn)</strong>
+              <span>Tự động ghép trang khổ A3 &bull; 3 tờ A3 in 2 mặt (lật cạnh ngắn) &bull; Gấp đôi thành catalogue A4 (210&times;297mm) cao cấp</span>
             </div>
           </div>
 
-          <div className="export-opt-btn" id="modalOptPrintStandard" onClick={onPrintStandard}>
-            <i className="fa-solid fa-file-pdf" />
+          <div className="export-opt-btn" id="modalOptPreviewUI" onClick={onPrintPreviewUI}>
+            <i className="fa-solid fa-images" />
             <div>
-              <strong>In / Xuất PDF 12 Trang Đơn (1:1 đúng kích thước UI)</strong>
-              <span>Khổ A4 dọc &bull; Mỗi trang 180&times;254.5mm đúng bằng bản web, không scale</span>
+              <strong>In Preview Như UI Để Xem</strong>
+              <span>Dàn từng cặp trang đôi trải phẳng y như giao diện lật sách &bull; Phù hợp xem trước hoặc gửi file PDF cho khách hàng</span>
             </div>
           </div>
-
-          <a href="https://zalo.me/0902286300" target="_blank" rel="noopener noreferrer" className="export-opt-btn">
-            <i className="fa-solid fa-comments" />
-            <div>
-              <strong>Liên Hệ Zalo Đặt Phòng Nhanh (0902 286 300)</strong>
-              <span>Tư vấn đặt phòng 24/7 &amp; hỗ trợ lưu trú chu đáo</span>
-            </div>
-          </a>
         </div>
       </div>
     </div>
