@@ -40,8 +40,8 @@ export const ExportModal: React.FC<ExportModalProps> = ({
           <div className="export-opt-btn highlight-opt" id="modalOptSlides" onClick={onPrintSlides}>
             <i className="fa-solid fa-images" />
             <div>
-              <strong>In Xem Trước Dạng Slide (2 bìa đơn + 5 trang đôi)</strong>
-              <span>Giống giao diện lật sách &bull; Bìa trước/bìa sau để riêng, 10 trang giữa ghép 2 trang / tờ A4</span>
+              <strong>In Xem Trước Dạng Slide (Trang Đôi Sách 6 Tờ A4)</strong>
+              <span>Dàn trang đôi trải phẳng &bull; Tờ 1 là bìa đôi [Bìa Sau | Bìa Trước], 5 tờ ruột ghép 2 trang / tờ A4</span>
             </div>
           </div>
 
