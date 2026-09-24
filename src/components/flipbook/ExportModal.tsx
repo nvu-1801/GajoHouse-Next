@@ -7,6 +7,7 @@ interface ExportModalProps {
   onShare: () => void;
   onPrintStandard: () => void;
   onPrintSlides: () => void;
+  onPrintSlidesA3?: () => void;
 }
 
 export const ExportModal: React.FC<ExportModalProps> = ({
@@ -16,6 +17,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
   onShare,
   onPrintStandard,
   onPrintSlides,
+  onPrintSlidesA3,
 }) => {
   return (
     <div
@@ -37,11 +39,19 @@ export const ExportModal: React.FC<ExportModalProps> = ({
         <p>Chọn phương thức xuất bản phù hợp:</p>
 
         <div className="export-options-grid">
-          <div className="export-opt-btn highlight-opt" id="modalOptSlides" onClick={onPrintSlides}>
+          <div className="export-opt-btn highlight-opt" id="modalOptSlidesA3" onClick={onPrintSlidesA3 || onPrintSlides}>
+            <i className="fa-solid fa-file-contract" />
+            <div>
+              <strong>In Xem Trước Dạng Slide - Khổ A3 Ngang (Đúng 6 Tờ A3)</strong>
+              <span>Dàn trang đôi 420&times;297mm &bull; Mỗi trang con đúng bằng 1 tờ A4 dọc (210&times;297mm) &bull; Gấp đôi thành catalogue A4</span>
+            </div>
+          </div>
+
+          <div className="export-opt-btn" id="modalOptSlides" onClick={onPrintSlides}>
             <i className="fa-solid fa-images" />
             <div>
-              <strong>In Xem Trước Dạng Slide (Trang Đôi Sách 6 Tờ A4)</strong>
-              <span>Dàn trang đôi trải phẳng &bull; Tờ 1 là bìa đôi [Bìa Sau | Bìa Trước], 5 tờ ruột ghép 2 trang / tờ A4</span>
+              <strong>In Xem Trước Dạng Slide - Khổ A4 Ngang (Đúng 6 Tờ A4)</strong>
+              <span>Dàn trang đôi 297&times;210mm &bull; Mỗi trang con khổ A5 (148.5&times;210mm) &bull; Phù hợp máy in văn phòng</span>
             </div>
           </div>
 

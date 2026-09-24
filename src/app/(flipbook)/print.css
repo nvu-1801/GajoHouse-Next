@@ -64,6 +64,7 @@
     /* Ẩn sân khấu 3D khi in */
     body.print-mode-booklet .stage-container,
     body.print-mode-slides .stage-container,
+    body.print-mode-slides-a3 .stage-container,
     body.print-mode-standard .stage-container {
         display: none !important;
     }
@@ -195,6 +196,106 @@
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
+    }
+
+    /* ==========================================================================
+       1B. CHẾ ĐỘ SLIDES PREVIEW A3 NGANG (420mm × 297mm) - ĐÚNG 6 TỜ A3
+       Mỗi nửa tờ = 210mm × 297mm (đúng bằng 1 tờ A4 dọc chuẩn).
+       Zoom 1.166 vừa khít 100% diện tích trang con.
+       ========================================================================== */
+    body.print-mode-slides-a3 .slides-print-container {
+        display: block !important;
+        width: 420mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body.print-mode-slides-a3 .slides-sheet {
+        width: 420mm !important;
+        height: 297mm !important;
+        min-width: 420mm !important;
+        max-width: 420mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        position: relative !important;
+        overflow: hidden !important;
+        background: #FFFFFF !important;
+    }
+
+    /* Mỗi nửa tờ A3 = 210mm × 297mm (chuẩn A4 dọc) */
+    body.print-mode-slides-a3 .slides-half {
+        width: 210mm !important;
+        height: 297mm !important;
+        min-width: 210mm !important;
+        max-width: 210mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
+        flex: 0 0 210mm !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        position: relative !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    /* Vạch phân chia/gấp nhẹ ở giữa tờ A3 */
+    body.print-mode-slides-a3 .slides-sheet .slides-half:first-child::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        border-right: 1px dashed rgba(60, 74, 62, 0.22);
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    /* Trang đặt chính giữa nửa tờ A3: zoom 1.166 khớp trọn 210×297mm (A4 dọc) */
+    body.print-mode-slides-a3 .slides-half .page {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 680px !important;
+        height: 962px !important;
+        min-width: 680px !important;
+        max-width: 680px !important;
+        min-height: 962px !important;
+        max-height: 962px !important;
+        zoom: 1.166 !important;
+        transform: none !important;
+        box-sizing: border-box !important;
+        box-shadow: none !important;
+        border: none !important;
+        margin: auto !important;
+        overflow: hidden !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        contain: none !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
     }
 
     /* ==========================================================================

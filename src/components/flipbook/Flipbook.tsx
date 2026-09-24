@@ -78,7 +78,7 @@ export default function Flipbook() {
   }, [copyText]);
 
   const prepareAndPrint = useCallback(
-    async (mode: 'booklet' | 'standard' | 'slides') => {
+    async (mode: 'booklet' | 'standard' | 'slides' | 'slides-a3') => {
       closeAllModals();
 
       let pageStyle = document.getElementById('dynamic-page-print-style') as HTMLStyleElement | null;
@@ -89,11 +89,13 @@ export default function Flipbook() {
       }
       if (mode === 'standard') {
         pageStyle.textContent = `@page { size: A4 portrait; margin: 0; }`;
+      } else if (mode === 'slides-a3') {
+        pageStyle.textContent = `@page { size: A3 landscape; margin: 0; }`;
       } else {
         pageStyle.textContent = `@page { size: A4 landscape; margin: 0; }`;
       }
 
-      document.body.classList.remove('print-mode-booklet', 'print-mode-standard', 'print-mode-slides');
+      document.body.classList.remove('print-mode-booklet', 'print-mode-standard', 'print-mode-slides', 'print-mode-slides-a3');
       document.body.classList.add(`print-mode-${mode}`);
 
       if (document.fonts && document.fonts.ready) {
@@ -156,6 +158,7 @@ export default function Flipbook() {
   const printBooklet = useCallback(() => prepareAndPrint('booklet'), [prepareAndPrint]);
   const printStandard = useCallback(() => prepareAndPrint('standard'), [prepareAndPrint]);
   const printSlides = useCallback(() => prepareAndPrint('slides'), [prepareAndPrint]);
+  const printSlidesA3 = useCallback(() => prepareAndPrint('slides-a3'), [prepareAndPrint]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -236,7 +239,7 @@ export default function Flipbook() {
     };
 
     const handleAfterPrint = () => {
-      document.body.classList.remove('print-mode-booklet', 'print-mode-standard', 'print-mode-slides');
+      document.body.classList.remove('print-mode-booklet', 'print-mode-standard', 'print-mode-slides', 'print-mode-slides-a3');
       const pageStyle = document.getElementById('dynamic-page-print-style');
       if (pageStyle) pageStyle.remove();
     };
@@ -379,6 +382,7 @@ export default function Flipbook() {
         onShare={handleShare}
         onPrintStandard={printStandard}
         onPrintSlides={printSlides}
+        onPrintSlidesA3={printSlidesA3}
       />
 
       <BookletModal
