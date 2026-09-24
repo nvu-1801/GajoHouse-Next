@@ -313,7 +313,12 @@ export default function Flipbook() {
       )}
 
       <div className="stage-container">
-        <FlipbookHeader onOpenBooklet={() => setIsBookletOpen(true)} onShare={handleShare} />
+        <FlipbookHeader
+          onOpenBooklet={() => setIsBookletOpen(true)}
+          onShare={handleShare}
+          onPrintA4={printSlides}
+          onPrintA3={printSlidesA3}
+        />
 
         <div
           className="flipbook-viewport"

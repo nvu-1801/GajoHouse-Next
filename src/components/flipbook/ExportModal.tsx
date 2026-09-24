@@ -39,19 +39,19 @@ export const ExportModal: React.FC<ExportModalProps> = ({
         <p>Chọn phương thức xuất bản phù hợp:</p>
 
         <div className="export-options-grid">
-          <div className="export-opt-btn highlight-opt" id="modalOptSlidesA3" onClick={onPrintSlidesA3 || onPrintSlides}>
-            <i className="fa-solid fa-file-contract" />
+          <div className="export-opt-btn highlight-opt" id="modalOptSlidesA4" onClick={onPrintSlides}>
+            <i className="fa-solid fa-print" />
             <div>
-              <strong>In Xem Trước Dạng Slide - Khổ A3 Ngang (Đúng 6 Tờ A3)</strong>
-              <span>Dàn trang đôi 420&times;297mm &bull; Mỗi trang con đúng bằng 1 tờ A4 dọc (210&times;297mm) &bull; Gấp đôi thành catalogue A4</span>
+              <strong>In A4 Ngang (Trang Đôi Sách - 6 Tờ A4)</strong>
+              <span>Khổ tiêu chuẩn 297&times;210mm &bull; Mỗi trang con khổ A5 (148.5&times;210mm) &bull; Phù hợp máy in văn phòng</span>
             </div>
           </div>
 
-          <div className="export-opt-btn" id="modalOptSlides" onClick={onPrintSlides}>
-            <i className="fa-solid fa-images" />
+          <div className="export-opt-btn" id="modalOptSlidesA3" onClick={onPrintSlidesA3 || onPrintSlides}>
+            <i className="fa-solid fa-file-contract" />
             <div>
-              <strong>In Xem Trước Dạng Slide - Khổ A4 Ngang (Đúng 6 Tờ A4)</strong>
-              <span>Dàn trang đôi 297&times;210mm &bull; Mỗi trang con khổ A5 (148.5&times;210mm) &bull; Phù hợp máy in văn phòng</span>
+              <strong>In A3 Ngang (Trang Đôi Sách - 6 Tờ A3 Khổ Lớn)</strong>
+              <span>Khổ lớn 420&times;297mm &bull; Mỗi trang con đúng bằng 1 tờ A4 dọc (210&times;297mm) &bull; Gấp đôi thành catalogue A4</span>
             </div>
           </div>
 

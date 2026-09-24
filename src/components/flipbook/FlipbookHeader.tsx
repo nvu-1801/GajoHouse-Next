@@ -5,9 +5,16 @@ import { SITE_CONFIG } from '@/data/site-config';
 interface FlipbookHeaderProps {
   onOpenBooklet: () => void;
   onShare: () => void;
+  onPrintA4: () => void;
+  onPrintA3: () => void;
 }
 
-export const FlipbookHeader: React.FC<FlipbookHeaderProps> = ({ onOpenBooklet, onShare }) => {
+export const FlipbookHeader: React.FC<FlipbookHeaderProps> = ({
+  onOpenBooklet,
+  onShare,
+  onPrintA4,
+  onPrintA3,
+}) => {
   return (
     <>
       <div className="brand-header">
@@ -18,8 +25,14 @@ export const FlipbookHeader: React.FC<FlipbookHeaderProps> = ({ onOpenBooklet, o
         <Link href="/" className="top-btn-pill">
           <i className="fa-solid fa-arrow-left" /> Về Trang Chủ
         </Link>
+        <button className="top-btn-pill" id="topPrintA4Btn" onClick={onPrintA4} title="In Xem Trước Dạng Slide - Khổ A4 Ngang (6 Tờ)">
+          <i className="fa-solid fa-print" /> In A4 Ngang
+        </button>
+        <button className="top-btn-pill" id="topPrintA3Btn" onClick={onPrintA3} title="In Xem Trước Dạng Slide - Khổ A3 Ngang (6 Tờ)">
+          <i className="fa-solid fa-file-contract" /> In A3 Ngang
+        </button>
         <button className="top-btn-pill" id="topBookletBtn" onClick={onOpenBooklet}>
-          <i className="fa-solid fa-book-open" /> In Booklet 2 Mặt (1-12, 2-11...)
+          <i className="fa-solid fa-book-open" /> Booklet 2 Mặt
         </button>
         <button className="top-btn-pill" id="topShareBtn" onClick={onShare}>
           <i className="fa-solid fa-share-nodes" /> Chia Sẻ
