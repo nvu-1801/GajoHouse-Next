@@ -13,7 +13,7 @@ const STEPS = [
     num: '01',
     icon: 'fa-solid fa-key',
     title: 'Gửi lại chìa khóa phòng',
-    desc: 'Bàn giao chìa khóa tại quầy lễ tân hoặc thông báo cho chủ nhà trước 11:00.',
+    desc: 'Bàn giao chìa khóa tại quầy lễ tân hoặc thông báo cho chủ nhà trước 12:00.',
   },
   {
     num: '02',

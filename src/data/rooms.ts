@@ -23,7 +23,7 @@ export const rooms: Room[] = [
       { src: '/images/ga-an/IMG_3106.jpg', label: 'GÓC THƯ GIÃN', objectPosition: 'center bottom' },
     ],
     specs: [
-      { label: 'DIỆN TÍCH', value: '22 m²' },
+      { label: 'DIỆN TÍCH', value: '25 m²' },
       { label: 'GIƯỜNG', value: '1 Giường đôi' },
       { label: 'SỨC CHỨA', value: '2 Khách' },
     ],
@@ -105,7 +105,7 @@ export const rooms: Room[] = [
       { src: '/images/ga-gio/IMG_6028.jpg', label: 'ĐĨA THAN & ĐÈN TREO' },
     ],
     specs: [
-      { label: 'DIỆN TÍCH', value: '28 m²' },
+      { label: 'DIỆN TÍCH', value: '25 m²' },
       { label: 'GIƯỜNG', value: '1 Giường đôi' },
       { label: 'SỨC CHỨA', value: '2 Khách' },
     ],
@@ -148,7 +148,7 @@ export const rooms: Room[] = [
       { src: '/images/ga-may/IMG_5997.jpg', label: 'GIÁ TREO ĐỒ & TRANH MÈO' },
     ],
     specs: [
-      { label: 'DIỆN TÍCH', value: '20 m²' },
+      { label: 'DIỆN TÍCH', value: '25 m²' },
       { label: 'GIƯỜNG', value: '1 Giường đôi' },
       { label: 'SỨC CHỨA', value: '2 Khách' },
     ],
@@ -191,7 +191,7 @@ export const rooms: Room[] = [
       { src: '/images/ga-nang/IMG_6034.jpg', label: 'GƯƠNG SOI & PHÒNG TẮM' },
     ],
     specs: [
-      { label: 'DIỆN TÍCH', value: '30 m²' },
+      { label: 'DIỆN TÍCH', value: '25 m²' },
       { label: 'GIƯỜNG', value: '1 Giường đôi' },
       { label: 'SỨC CHỨA', value: '2 Khách' },
     ],
@@ -234,7 +234,7 @@ export const rooms: Room[] = [
       { src: '/images/ga-tron/IMG_6009.jpg', label: 'TỦ MÂY & ĐĨA THAN RETRO' },
     ],
     specs: [
-      { label: 'DIỆN TÍCH', value: '24 m²' },
+      { label: 'DIỆN TÍCH', value: '20 m²' },
       { label: 'GIƯỜNG', value: '1 Giường đôi' },
       { label: 'SỨC CHỨA', value: '2 Khách' },
     ],
@@ -314,7 +314,7 @@ export const rooms: Room[] = [
       { src: '/images/ga-dinh/IMG_3382.jpg', label: 'MẶT TIỀN ĐÁ MỘC' },
     ],
     specs: [
-      { label: 'DIỆN TÍCH', value: '35 m²' },
+      { label: 'DIỆN TÍCH', value: '30 m²' },
       { label: 'GIƯỜNG', value: '2 Giường đôi, 1 Sofa bed đơn' },
       { label: 'SỨC CHỨA', value: '4–5 Khách' },
     ],

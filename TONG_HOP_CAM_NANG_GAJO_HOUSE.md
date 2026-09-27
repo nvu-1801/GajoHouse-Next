@@ -132,8 +132,8 @@ Lạc không nhất thiết là mất phương hướng. Đôi khi, lạc là t�
 ## PHẦN 5: TIỆN ÍCH LƯU TRÚ & NỘI QUY CẦN BIẾT
 
 * 📶 **Mạng Wi-Fi:** `GAJO_GUEST` | **Password:** `gajohouse2026`
-* ⏰ **Giờ Check-in:** Từ `14:00` | **Giờ Check-out:** Trước `11:00 - 12:00` trưa.
-* 🔑 **Gửi lại chìa khóa:** Quý khách vui lòng gửi lại chìa khóa/thẻ phòng tại quầy Lễ tân hoặc thả vào khay nhận chìa trước `11:00` khi trả phòng.
+* ⏰ **Giờ Check-in:** Từ `14:00` | **Giờ Check-out:** Trước `12:00` trưa.
+* 🔑 **Gửi lại chìa khóa:** Quý khách vui lòng gửi lại chìa khóa/thẻ phòng tại quầy Lễ tân hoặc thả vào khay nhận chìa trước `12:00` khi trả phòng.
 * 🌿 **Giữ gìn không gian chung:** Homestay tôn trọng sự yên tĩnh từ `22:00` đến `07:00` sáng hôm sau. Không hút thuốc trong phòng kín (vui lòng sử dụng khu vực sân vườn).
 
 ---

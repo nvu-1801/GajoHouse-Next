@@ -19,7 +19,7 @@ export const ASSET_SECTIONS: AssetSection[] = [
     title: 'Thiết bị điện và điện tử',
     note: 'Áp dụng khi làm rơi vỡ, chập cháy do sử dụng sai cách hoặc làm mất',
     items: [
-      { stt: '1', name: 'Smart Tivi (32 - 40 inch)', unit: 'Cái', price: '4.500.000', note: 'Vỡ màn hình, hỏng bo mạch do đổ nước' },
+      { stt: '1', name: 'Smart Tivi (43 - 55 inch)', unit: 'Cái', price: '4.500.000', note: 'Vỡ màn hình, hỏng bo mạch do đổ nước' },
       { stt: '2', name: 'Điều hòa không khí (Máy lạnh)', unit: 'Bộ', price: '7.000.000', note: '' },
       { stt: '3', name: 'Tủ lạnh mini (Minibar)', unit: 'Cái', price: '3.000.000', note: 'Móp méo, vỡ khay kính bên trong' },
       { stt: '4', name: 'Điều khiển (Remote) Tivi / Máy lạnh', unit: 'Cái', price: '250.000', note: 'Mất hoặc vỡ hỏng' },

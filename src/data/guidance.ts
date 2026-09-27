@@ -11,7 +11,7 @@ export const HOUSE_RULES: GuideRule[] = [
     num: '01',
     icon: 'fa-solid fa-clock',
     title: 'Check-in & Check-out',
-    desc: 'Nhận phòng từ 14:00 • Trả phòng trước 11:00 trưa hôm sau. Liên hệ lễ tân nếu cần nhận sớm hoặc trả muộn.',
+    desc: 'Nhận phòng từ 14:00 • Trả phòng trước 12:00 trưa hôm sau. Liên hệ lễ tân nếu cần nhận sớm hoặc trả muộn.',
     image: '/assets/gajo-double-bed.jpg',
   },
   {

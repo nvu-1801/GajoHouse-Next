@@ -12,7 +12,7 @@ const STEPS: Step[] = [
   {
     icon: 'fa-solid fa-key',
     title: 'Gửi lại chìa khóa phòng',
-    desc: 'Bàn giao chìa khóa/thẻ từ tại quầy Lễ tân hoặc thả vào khay nhận chìa trước 11:00.',
+    desc: 'Bàn giao chìa khóa/thẻ từ tại quầy Lễ tân hoặc thả vào khay nhận chìa trước 12:00.',
   },
   {
     icon: 'fa-solid fa-suitcase-rolling',
@@ -48,7 +48,7 @@ interface QuickInfo {
 }
 
 const QUICK_INFO: QuickInfo[] = [
-  { icon: 'fa-regular fa-clock', label: 'Giờ trả phòng', value: 'Trước 11:00' },
+  { icon: 'fa-regular fa-clock', label: 'Giờ trả phòng', value: 'Trước 12:00' },
   { icon: 'fa-solid fa-headset', label: 'Hotline 24/7', value: '0902 286 300' },
   { icon: 'fa-solid fa-suitcase', label: 'Giữ hành lý', value: 'Miễn phí trong ngày' },
 ];

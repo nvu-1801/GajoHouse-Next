@@ -31,7 +31,7 @@ const ROOMS: RoomCardData[] = [
     title: 'Deluxe Double Room',
     specs: [
       { icon: 'fa-solid fa-heart', text: '2 Khách' },
-      { icon: 'fa-solid fa-vector-square', text: '28 m²' },
+      { icon: 'fa-solid fa-vector-square', text: '25 m²' },
       { icon: 'fa-solid fa-bed', text: '1 Giường King' },
       { icon: 'fa-solid fa-book-open-reader', text: 'Góc Đọc Sách' },
     ],
